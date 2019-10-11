@@ -9,8 +9,6 @@ Currently live on ps-russelld but I will move them to a proper deployment soonâ„
 Settings required to run are stored in a separate config.yml file. You will need to create this file locally in the root directory.
 
 This takes:
-#config.yml
-
 url : "https://pathto.zendesk.com/api/v2" eg https://redgatesupport.zendesk.com/api/v2
 username : "zendesk username"
 token : "zendesk api token"
