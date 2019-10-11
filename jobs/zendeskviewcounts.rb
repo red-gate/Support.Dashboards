@@ -2,10 +2,10 @@ require 'yaml'
 require 'zendesk_api'
 
 client = ZendeskAPI::Client.new do |config|
-  config = YAML.load_file("config.yml")
-  config.url = config[:zendesk][:url]
-  config.username = config[:zendesk][:username]
-  config.token = config[:zendesk][:token]
+  configobject = YAML.load_file("config.yml")
+  config.url = configobject['url']
+  config.username = configobject['username']
+  config.token = configobject['token']
   config.retry = true
 end
 
