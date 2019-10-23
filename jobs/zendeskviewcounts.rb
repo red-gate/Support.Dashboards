@@ -10,7 +10,7 @@ client = ZendeskAPI::Client.new do |config|
 end
 
 # array of view IDs to check, these are your data-id's in your erb file.
-  views = [27403332,29311566,75065288,360102654454,360107318794,37830066,163887427,360016776498,360016786957,360036902754]
+  views = [27403332,29311566,75065288,360102654454,360107318794,37830066,163887427,360016776498,360016786957,360036902754,360033922134]
 
   # TS Views
   # 27403332 - Unassigned
@@ -27,6 +27,7 @@ end
   # 37830066 - CS open tickets
   # 360036902754 - no ticket cause for all
   # 360107318794 - tickets breaching in 1 business day
+  # 360033922134 - tickets with no priority
 
 SCHEDULER.every '1m', :first_in => 0 do |job|
   counts = client.view_counts(:ids => views, :path => 'views/count_many')
