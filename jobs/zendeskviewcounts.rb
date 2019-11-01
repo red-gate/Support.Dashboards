@@ -2,10 +2,17 @@ require 'yaml'
 require 'zendesk_api'
 
 client = ZendeskAPI::Client.new do |config|
-  configobject = YAML.load_file("config.yml")
-  config.url = configobject['url']
-  config.username = configobject['username']
-  config.token = configobject['token']
+  if File.file?("config.yml")
+    configobject = YAML.load_file("config.yml")
+    config.username = configobject['username']
+    config.token = configobject['token']
+  else
+    # No config file. Let's load from some environment variables.
+    # Easier to configure when deploying docker containers from octopus.
+    config.username = ENV['zendesk_username']
+    config.token = ENV['zendesk_token']
+  end
+  config.url = "https://redgatesupport.zendesk.com/api/v2"
   config.retry = true
 end
 
@@ -17,7 +24,7 @@ end
   # 29311566 - inbox (new)
   # 75065288 - 2 hours to breach
   # 360102654454 - urgent open
-  
+
   # Internal Escalations
   # 163887427 - internal escalations (all time)
   # 360016776498 - Internal escalations in the last month
