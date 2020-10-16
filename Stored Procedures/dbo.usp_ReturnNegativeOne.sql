@@ -1,0 +1,16 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE   PROCEDURE [dbo].[usp_ReturnNegativeOne]
+
+AS
+
+BEGIN
+
+       SET NOCOUNT ON;
+
+       RETURN -1
+
+END
+GO

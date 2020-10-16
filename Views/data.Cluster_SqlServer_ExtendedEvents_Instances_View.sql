@@ -1,0 +1,9 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE VIEW [data].[Cluster_SqlServer_ExtendedEvents_Instances_View] AS SELECT[data].[Cluster_SqlServer_ExtendedEvents_Instances].[Id] AS [Id], [data].[Cluster_SqlServer_ExtendedEvents_Keys].[CollectionDate] AS [IdCollectionDate], [data].[Cluster_SqlServer_ExtendedEvents_Instances].[_EventData] AS [Cluster_SqlServer_ExtendedEvents_EventData], [data].[Cluster_SqlServer_ExtendedEvents_Instances].[_FileName] AS [Cluster_SqlServer_ExtendedEvents_FileName], [data].[Cluster_SqlServer_ExtendedEvents_Instances].[_FileOffset] AS [Cluster_SqlServer_ExtendedEvents_FileOffset], [data].[Cluster_SqlServer_ExtendedEvents_Instances].[CollectionDate] AS [CollectionDate], [utils].[TicksToDateTime]([data].[Cluster_SqlServer_ExtendedEvents_Instances].[CollectionDate]) AS [CollectionDate_DateTime], [data].[Cluster_Keys].[_Name] AS [Cluster_Name], [data].[Cluster_SqlServer_Keys].[_Name] AS [Cluster_SqlServer_Name], [data].[Cluster_SqlServer_ExtendedEvents_Keys].[_EventName] AS [Cluster_SqlServer_ExtendedEvents_EventName], [data].[Cluster_SqlServer_ExtendedEvents_Keys].[_Sequence] AS [Cluster_SqlServer_ExtendedEvents_Sequence], [data].[Cluster_SqlServer_ExtendedEvents_Keys].[_TimeStamp] AS [Cluster_SqlServer_ExtendedEvents_TimeStamp], [utils].[TicksToDateTime]([data].[Cluster_SqlServer_ExtendedEvents_Keys].[_TimeStamp]) AS [Cluster_SqlServer_ExtendedEvents_TimeStamp_DateTime] FROM [data].[Cluster_SqlServer_ExtendedEvents_Instances] INNER JOIN [data].[Cluster_SqlServer_ExtendedEvents_Keys] ON [data].[Cluster_SqlServer_ExtendedEvents_Keys].[Id] = [data].[Cluster_SqlServer_ExtendedEvents_Instances].[Id]
+ INNER JOIN [data].[Cluster_SqlServer_Keys] ON [data].[Cluster_SqlServer_Keys].[Id] = [data].[Cluster_SqlServer_ExtendedEvents_Keys].[ParentId]
+ INNER JOIN [data].[Cluster_Keys] ON [data].[Cluster_Keys].[Id] = [data].[Cluster_SqlServer_Keys].[ParentId]
+;
+GO

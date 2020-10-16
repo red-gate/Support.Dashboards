@@ -1,0 +1,9 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE VIEW [data].[AzureSqlServer_Database_SqlProcess_Instances_View] AS SELECT[data].[AzureSqlServer_Database_SqlProcess_Instances].[Id] AS [Id], [data].[AzureSqlServer_Database_SqlProcess_Keys].[CollectionDate] AS [IdCollectionDate], [data].[AzureSqlServer_Database_SqlProcess_Instances].[_Hostname] AS [AzureSqlServer_Database_SqlProcess_Hostname], [data].[AzureSqlServer_Database_SqlProcess_Instances].[_LoginName] AS [AzureSqlServer_Database_SqlProcess_LoginName], [data].[AzureSqlServer_Database_SqlProcess_Instances].[_ProgramName] AS [AzureSqlServer_Database_SqlProcess_ProgramName], [data].[AzureSqlServer_Database_SqlProcess_Instances].[CollectionDate] AS [CollectionDate], [utils].[TicksToDateTime]([data].[AzureSqlServer_Database_SqlProcess_Instances].[CollectionDate]) AS [CollectionDate_DateTime], [data].[AzureSqlServer_Keys].[_Name] AS [AzureSqlServer_Name], [data].[AzureSqlServer_Database_Keys].[_Name] AS [AzureSqlServer_Database_Name], [data].[AzureSqlServer_Database_SqlProcess_Keys].[_LoginTime] AS [AzureSqlServer_Database_SqlProcess_LoginTime], [utils].[TicksToDateTime]([data].[AzureSqlServer_Database_SqlProcess_Keys].[_LoginTime]) AS [AzureSqlServer_Database_SqlProcess_LoginTime_DateTime], [data].[AzureSqlServer_Database_SqlProcess_Keys].[_SessionId] AS [AzureSqlServer_Database_SqlProcess_SessionId] FROM [data].[AzureSqlServer_Database_SqlProcess_Instances] INNER JOIN [data].[AzureSqlServer_Database_SqlProcess_Keys] ON [data].[AzureSqlServer_Database_SqlProcess_Keys].[Id] = [data].[AzureSqlServer_Database_SqlProcess_Instances].[Id]
+ INNER JOIN [data].[AzureSqlServer_Database_Keys] ON [data].[AzureSqlServer_Database_Keys].[Id] = [data].[AzureSqlServer_Database_SqlProcess_Keys].[ParentId]
+ INNER JOIN [data].[AzureSqlServer_Keys] ON [data].[AzureSqlServer_Keys].[Id] = [data].[AzureSqlServer_Database_Keys].[ParentId]
+;
+GO

@@ -1,0 +1,3 @@
+CREATE SCHEMA [datawarehouse]
+AUTHORIZATION [dbo]
+GO

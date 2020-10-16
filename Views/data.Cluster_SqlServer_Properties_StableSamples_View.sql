@@ -1,0 +1,8 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE VIEW [data].[Cluster_SqlServer_Properties_StableSamples_View] AS SELECT[data].[Cluster_SqlServer_Properties_StableSamples].[Id] AS [Id], [data].[Cluster_SqlServer_Keys].[CollectionDate] AS [IdCollectionDate], [data].[Cluster_SqlServer_Properties_StableSamples].[_Collation] AS [Cluster_SqlServer_Properties_Collation], [data].[Cluster_SqlServer_Properties_StableSamples].[_Edition] AS [Cluster_SqlServer_Properties_Edition], [data].[Cluster_SqlServer_Properties_StableSamples].[_IsClustered] AS [Cluster_SqlServer_Properties_IsClustered], [data].[Cluster_SqlServer_Properties_StableSamples].[_IsSingleUser] AS [Cluster_SqlServer_Properties_IsSingleUser], [data].[Cluster_SqlServer_Properties_StableSamples].[_IsVirtualMachine] AS [Cluster_SqlServer_Properties_IsVirtualMachine], [data].[Cluster_SqlServer_Properties_StableSamples].[_ProductLevel] AS [Cluster_SqlServer_Properties_ProductLevel], [data].[Cluster_SqlServer_Properties_StableSamples].[_ProductVersion] AS [Cluster_SqlServer_Properties_ProductVersion], [data].[Cluster_SqlServer_Properties_StableSamples].[CollectionDate] AS [CollectionDate], [utils].[TicksToDateTime]([data].[Cluster_SqlServer_Properties_StableSamples].[CollectionDate]) AS [CollectionDate_DateTime], [data].[Cluster_Keys].[_Name] AS [Cluster_Name], [data].[Cluster_SqlServer_Keys].[_Name] AS [Cluster_SqlServer_Name] FROM [data].[Cluster_SqlServer_Properties_StableSamples] INNER JOIN [data].[Cluster_SqlServer_Keys] ON [data].[Cluster_SqlServer_Keys].[Id] = [data].[Cluster_SqlServer_Properties_StableSamples].[Id]
+ INNER JOIN [data].[Cluster_Keys] ON [data].[Cluster_Keys].[Id] = [data].[Cluster_SqlServer_Keys].[ParentId]
+;
+GO
